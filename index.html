@@ -1,120 +1,403 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>트래블 카드 테스트 결과</title>
-    <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f2f8ff;
-        margin: 0;
-        padding: 0;
-        color: #222;
-      }
-
-      .container {
-        max-width: 700px;
-        margin: 50px auto;
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      h1 {
-        color: #2d64ff;
-        font-size: 28px;
-        margin-bottom: 10px;
-      }
-
-      .card-title {
-        font-size: 22px;
-        font-weight: bold;
-        color: #2d64ff;
-        margin-top: 40px;
-      }
-
-      .description {
-        font-size: 16px;
-        line-height: 1.6;
-        margin-top: 10px;
-      }
-
-      .hashtags {
-        margin-top: 15px;
-        color: #0077cc;
-        font-size: 14px;
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          margin: 20px;
-          padding: 20px;
-        }
-        h1 {
-          font-size: 24px;
-        }
-        .card-title {
-          font-size: 20px;
-        }
-        .description {
-          font-size: 15px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>당신에게 어울리는 트래블 카드 결과는?</h1>
-
-      <div class="card-result">
-        <div class="card-title">트래블 월렛</div>
-        <div class="description">
-          계획은 내가 한다, 예산도 내가 조절한다. 심플하고 빠른 선택을 선호하는 당신에게 딱 맞는 카드예요. 불필요한 혜택 없이 핵심만 담아, 미국·일본·유럽에서는 환율 수수료도 0%. 수동 충전 방식으로 지출을 정밀하게 조절할 수 있어요. 자유여행러나 미니멀 여행자에게 완벽하게 어울립니다.
-        </div>
-        <div class="hashtags">#심플한여행 #수동충전러 #트래블월렛 #미일유럽맞춤 #환율걱정없음</div>
-      </div>
-
-      <div class="card-result">
-        <div class="card-title">트래블 로그 체크카드</div>
-        <div class="description">
-          아시아 여행? 이제는 껌이지. 동남아, 중국, 일본, 대만에 익숙한 당신에게는 이 카드가 최고. 자동 충전 기능과 함께 58개국 환전 수수료 무료까지. 유니온페이 선택 시 중국에서도 자연스럽게 결제 가능해요. 출장이나 아시아 여행이 잦다면 이 카드가 루틴이 될 거예요.
-        </div>
-        <div class="hashtags">#아시아여행러 #중국갈때필수 #자동충전 #수수료제로 #트래블로그</div>
-      </div>
-
-      <div class="card-result">
-        <div class="card-title">트래블GO 체크카드</div>
-        <div class="description">
-          유럽 도시는 걷고, 타고, 찍고, 쓰는 재미지. 유럽에서 대중교통까지 쓸 수 있는 실속파 카드예요. 외화 충전 기반이라 환전 수수료도 적고, 현지에서 교통카드처럼 쓸 수 있어 유럽 여행에 최적화되어 있어요. 도시 탐험가와 장기 여행자에게 추천합니다.
-        </div>
-        <div class="hashtags">#유럽감성 #여행고수템 #대중교통마스터 #트래블GO는사랑</div>
-      </div>
-
-      <div class="card-result">
-        <div class="card-title">신한 SOL 트레블</div>
-        <div class="description">
-          혜택 빠삭하게 챙기는 사람, 바로 당신. 일본, 베트남, 미국 등 다양한 국가에서 할인 혜택이 적용돼요. 충전도 편하고 외화 계좌 관리도 가능해요. 혜택과 실속을 모두 챙기고 싶은 여행자에게는 이 카드가 정답입니다.
-        </div>
-        <div class="hashtags">#혜택왕 #여행리워드 #스타벅스5퍼 #베트남그랩할인 #신한트레블</div>
-      </div>
-
-      <div class="card-result">
-        <div class="card-title">토스카드</div>
-        <div class="description">
-          심플하지만 강력한 한 방. 토스 앱 하나로 모든 걸 관리할 수 있고, 하루 최대 1천만 원 충전까지 가능해요. UI도 예쁘고 직관적이라 IT 감각 있는 여행자에게 찰떡입니다. 지갑 없이 다니는 모바일 유저에게는 이 카드가 핵심.
-        </div>
-        <div class="hashtags">#하루천만원가능 #간편UI #토스유저 #심플라이프 #테크여행러</div>
-      </div>
-
-      <div class="card-result">
-        <div class="card-title">네이버페이머니카드</div>
-        <div class="description">
-          여행도 일상도, 결국 혜택으로 돌아온다. 국내에서는 네이버페이 혜택, 해외에선 무제한 3% 캐시백까지. 외화 충전 없이도 결제가 가능해요. 여행을 가끔 가더라도 혜택은 꼭 챙기고 싶은 실속형 여행자라면 이 카드가 정답.
-        </div>
-        <div class="hashtags">#국내해외모두OK #캐시백꿀 #네이버페이카드 #체크카드의힘 #일상여행러</div>
-      </div>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>거주 카드 테스트</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fdfdfd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .intro {
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .start-btn {
+      display: block;
+      margin: 0 auto;
+      background-color: #2b85f8;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .start-btn:hover {
+      background-color: #1f5fbf;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📃 어딩<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>거주 카드 테스트</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fdfdfd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .intro {
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .start-btn {
+      display: block;
+      margin: 0 auto;
+      background-color: #2b85f8;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .start-btn:hover {
+      background-color: #1f5fbf;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✈️ 어딩의 트레블 카드 테스트</h1>
+    <p class="intro">
+      ✈️ 여행 준비의 시작,<br />
+      💳 나에게 딱 맞는 트래블 카드부터 골라보세요.<br />
+      어딩이 만든 1분 테스트로<br />
+      <strong>혜택·스타일·사용법까지</strong> 내 여행 성향에 맞는 카드 찾기!
+    </p>
+    <button class="start-btn" onclick="location.href='quiz.html'">테스트 시작하기</button>
+  </div>
+</body>
 </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>어딩 💳 트래블 카드 테스트</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Apple SD Gothic Neo', sans-serif;
+      background-color: #f0f6ff;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 600px;
+      width: 90%;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: #2056e2;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #444;
+    }
+    .question {
+      margin: 30px 0;
+    }
+    .question h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .option {
+      background: #f5f9ff;
+      border: 1px solid #d0dff9;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 8px 0;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .option:hover {
+      background: #dbeaff;
+    }
+    .option.selected {
+      background: #2056e2;
+      color: #fff;
+      font-weight: bold;
+    }
+    #startBtn, #nextBtn, #submitBtn {
+      background: #2056e2;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #startBtn:hover, #nextBtn:hover, #submitBtn:hover {
+      background: #1c4bd4;
+    }
+    .hidden {
+      display: none;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 20px;
+      }
+      .container {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="intro">
+    <h1>어딩 ✈️ 트래블 카드 테스트</h1>
+    <p>여행사 업무의 A to Z - 어딩에서 만들었어요 💙<br/>나에게 딱 맞는 트래블 카드를 찾아보세요!</p>
+    <button id="startBtn">테스트 시작하기</button>
+  </div>
+
+  <div class="container hidden" id="quiz">
+    <div class="question" id="questionBox">
+      <h2 id="questionText">질문 텍스트</h2>
+      <div id="options"></div>
+    </div>
+    <button id="nextBtn">다음</button>
+    <button id="submitBtn" class="hidden">결과 보기</button>
+  </div>
+
+<script>
+const questions = [
+  {
+    "question": "여행지에서 가장 중요하게 생각하는 건?",
+    "options": [
+      { "text": "환율 우대/수수료 절감", "weights": [3, 3, 3, 2, 2, 1] },
+      { "text": "나라별 혜택/할인", "weights": [0, 1, 1, 3, 0, 3] },
+      { "text": "간편한 충전 방식", "weights": [1, 3, 3, 3, 3, 1] }
+    ]
+  },
+  {
+    "question": "주로 가는 지역은 어디인가요?",
+    "options": [
+      { "text": "미국/유럽/일본", "weights": [3, 2, 3, 3, 1, 2] },
+      { "text": "중국/동남아/대만", "weights": [0, 3, 3, 2, 1, 1] },
+      { "text": "국내 or 전체 다소 가끔", "weights": [1, 1, 1, 1, 3, 3] }
+    ]
+  },
+  {
+    "question": "내 여행 스타일은?",
+    "options": [
+      { "text": "자유여행, 계획형", "weights": [3, 2, 2, 1, 2, 2] },
+      { "text": "출장/단기여행", "weights": [1, 3, 2, 3, 1, 2] },
+      { "text": "한 달 살기/장기여행", "weights": [1, 2, 3, 1, 3, 1] }
+    ]
+  },
+  {
+    "question": "충전 방식은 어떤 게 좋아요?",
+    "options": [
+      { "text": "수동 충전", "weights": [3, 1, 1, 1, 1, 2] },
+      { "text": "자동 충전", "weights": [1, 3, 3, 3, 3, 1] }
+    ]
+  },
+  {
+    "question": "내가
+
+
+    const cardNames = [
+      "트래블 월렛",
+      "트래블로그 체크카드",
+      "트래블GO 체크카드",
+      "신한 SOL 트레블",
+      "토스카드",
+      "네이버페이머니카드"
+    ];
+
+    let currentQuestion = 0;
+    const userScores = [0, 0, 0, 0, 0, 0];
+
+    const startBtn = document.getElementById("startBtn");
+    const quizBox = document.getElementById("quiz");
+    const introBox = document.getElementById("intro");
+    const questionText = document.getElementById("questionText");
+    const optionsBox = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    let selectedOption = null;
+
+    startBtn.onclick = () => {
+      introBox.classList.add("hidden");
+      quizBox.classList.remove("hidden");
+      loadQuestion();
+    };
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      questionText.textContent = q.question;
+      optionsBox.innerHTML = "";
+
+      q.options.forEach((opt, i) => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.textContent = opt.text;
+        div.onclick = () => {
+          document.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
+          div.classList.add("selected");
+          selectedOption = i;
+        };
+        optionsBox.appendChild(div);
+      });
+    }
+
+    nextBtn.onclick = () => {
+      if (selectedOption === null) {
+        alert("옵션을 선택해주세요!");
+        return;
+      }
+      const weights = questions[currentQuestion].options[selectedOption].weights;
+      for (let i = 0; i < userScores.length; i++) {
+        userScores[i] += weights[i];
+      }
+      selectedOption = null;
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        nextBtn.classList.add("hidden");
+        submitBtn.classList.remove("hidden");
+      }
+    };
+
+    submitBtn.onclick = () => {
+      const maxIndex = userScores.indexOf(Math.max(...userScores));
+      const resultCard = cardNames[maxIndex];
+      window.location.href = `result.html?card=${encodeURIComponent(resultCard)}`;
+    };
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>트래블 카드 테스트 결과</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .result-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      line-height: 1.7;
+      margin-bottom: 1em;
+    }
+    .hashtags {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 2em;
+    }
+    .card-result {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <div class="card-result">
+      <h2>💳 트래블 월런</h2>
+      <p>“계획은 내가 한다. 예산은 내가 조절한다.”<br>
+      심플하고 빠른 선택을 선호하는 당신,
+      트래블 월런은 불필요한 혜택 없이 따후 허신만 담은 카드예요.
+      수동 충전 방식이라 내 지촉을 정확히 컨트롤할 수 있고,
+      미국·일본·유럽처럼 자주 가는 지역에서 환전 수수료 0%라는 점도 강력한 장점!<br>
+      자유여행러, 미니머벌 여행자에게 특히 잘 연결됩니다.
+      </p>
+      <div class="hashtags">#심플한여행 #수동충전러 #트래블월런 #미일유럽맞추마 #환율걱정없음</div>
+    </div>
+
+    <!-- 여기에 다른 카드 결과도 같은 구조로 추가하세요 -->
+
+  </div>
+</body>
+</html>
+
