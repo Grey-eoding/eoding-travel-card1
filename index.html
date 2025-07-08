@@ -1,86 +1,200 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>여행 성향 테스트</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>어딩 트래블 카드 테스트</title>
   <style>
     body {
-      font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
       text-align: center;
+      background-color: #f5f9fc;
     }
-
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 40px 20px;
+    .cover h1 {
+      font-size: 2rem;
+      color: #2d9cdb;
+      margin-bottom: 1rem;
     }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 30px;
+    .cover p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #555;
     }
-
-    .btn {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 15px;
-      font-size: 1.1em;
-      font-weight: bold;
+    .start-btn {
+      background-color: #2d9cdb;
+      color: white;
       border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
     }
-
-    .btn-dark {
-      background-color: #333;
-      color: #fff;
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-
-    .btn-yellow {
-      background-color: #fee500;
+    .question {
+      display: none;
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+    .question.active {
+      display: flex;
+    }
+    .question h2 {
+      font-size: 1.2rem;
+      color: #2d9cdb;
+    }
+    .options button {
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid #2d9cdb;
+      border-radius: 6px;
+      background-color: white;
+      color: #2d9cdb;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .options button:hover {
+      background-color: #2d9cdb;
+      color: white;
+    }
+    .result {
+      display: none;
+      text-align: center;
+    }
+    .result h2 {
+      color: #2d9cdb;
+    }
+    .button-group {
+      margin-top: 2rem;
+    }
+    .button-group button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .restart-btn {
+      background-color: #2d9cdb;
+      color: white;
+    }
+    .share-btn {
+      background-color: #e0e0e0;
       color: #333;
     }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5em;
+    @media (max-width: 600px) {
+      .cover h1 {
+        font-size: 1.5rem;
       }
-      .btn {
-        font-size: 1em;
-        padding: 12px;
+      .cover p {
+        font-size: 0.9rem;
+      }
+      .question h2, .options button, .result h2 {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>여행 성향 테스트 결과</h1>
+  <div class="cover" id="cover">
+    <h1>어딩 트래블 카드 테스트</h1>
+    <p>당신에게 꼭 맞는 해외여행 카드, 지금 찾아보세요!</p>
+    <button class="start-btn" onclick="startTest()">시작하기</button>
+  </div>
 
-    <!-- 결과 이미지 저장 버튼 -->
-    <button class="btn btn-dark" onclick="saveAsImage()">결과 이미지로 저장하기</button>
-
-    <!-- 다시 테스트하기 버튼 -->
-    <button class="btn btn-dark" onclick="location.href='index.html'">다시 테스트하기</button>
-
-    <!-- 링크 복사하기 버튼 -->
-    <button class="btn btn-yellow" onclick="copyLink()">🔗 링크 복사하기</button>
+  <div class="container" id="test-container" style="display: none;">
+    <div id="questions"></div>
+    <div class="result" id="result">
+      <h2 id="result-title">추천 카드</h2>
+      <p id="result-desc"></p>
+      <div class="button-group">
+        <button class="restart-btn" onclick="restartTest()">다시 테스트하기</button>
+        <button class="share-btn" onclick="copyLink()">링크 복사하기</button>
+      </div>
+    </div>
   </div>
 
   <script>
-    function saveAsImage() {
-      alert("현재는 이미지 저장 기능이 구현되어 있지 않습니다. 추후 추가 예정입니다.");
+    const questions = [
+      { q: '1. 여행할 나라가 어디인가요?', a: ['일본', '유럽', '미국', '동남아'] },
+      { q: '2. 카드 발급 시 어떤 점이 중요하신가요?', a: ['연회비 없음', '환율 우대', 'ATM 수수료', '간편한 연결계좌'] },
+      { q: '3. 어떤 브랜드를 선호하시나요?', a: ['비자', '마스터', '유니온페이', '상관없음'] },
+      { q: '4. 외화 충전 방식은 어떤 게 좋나요?', a: ['자동', '수동', '둘 다 가능', '충전 없이 결제'] },
+      { q: '5. 어떤 혜택을 원하시나요?', a: ['편의점 할인', '교통 할인', '캐시백', '수수료 없음'] },
+      { q: '6. 원화 재환전 수수료는?', a: ['없음', '있어도 괜찮음'] },
+      { q: '7. 외화 보유 한도는?', a: ['작아도 괜찮음', '최대한 높게', '상관없음'] },
+      { q: '8. ATM 인출 자주 하시나요?', a: ['자주 한다', '거의 안 한다'] }
+    ];
+
+    let current = 0;
+
+    function startTest() {
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('test-container').style.display = 'block';
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const qWrap = document.getElementById('questions');
+      qWrap.innerHTML = '';
+      if (current < questions.length) {
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question active';
+        qDiv.innerHTML = `<h2>${questions[current].q}</h2>`;
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options';
+        questions[current].a.forEach((opt) => {
+          const btn = document.createElement('button');
+          btn.innerText = opt;
+          btn.onclick = () => {
+            current++;
+            renderQuestion();
+          };
+          optionsDiv.appendChild(btn);
+        });
+
+        qDiv.appendChild(optionsDiv);
+        qWrap.appendChild(qDiv);
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      const result = document.getElementById('result');
+      result.style.display = 'block';
+      document.getElementById('questions').style.display = 'none';
+      document.getElementById('result-title').innerText = '추천 카드: 트레블 월렛';
+      document.getElementById('result-desc').innerText = '연회비 없이 수수료 혜택까지 챙길 수 있는 스마트한 여행 카드예요!';
+    }
+
+    function restartTest() {
+      current = 0;
+      document.getElementById('result').style.display = 'none';
+      document.getElementById('questions').style.display = 'block';
+      renderQuestion();
     }
 
     function copyLink() {
-      const url = window.location.href;
-      navigator.clipboard.writeText(url)
-        .then(() => alert("링크가 복사되었습니다!"))
-        .catch(() => alert("복사에 실패했어요. 직접 복사해주세요!"));
+      navigator.clipboard.writeText(window.location.href);
+      alert('링크가 복사되었습니다!');
     }
   </script>
 </body>
