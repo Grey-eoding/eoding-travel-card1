@@ -1,201 +1,120 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>어딩 트래블 카드 테스트</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-    }
-    .cover {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-      text-align: center;
-      background-color: #f5f9fc;
-    }
-    .cover h1 {
-      font-size: 2rem;
-      color: #2d9cdb;
-      margin-bottom: 1rem;
-    }
-    .cover p {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      color: #555;
-    }
-    .start-btn {
-      background-color: #2d9cdb;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .question {
-      display: none;
-      flex-direction: column;
-      margin-bottom: 2rem;
-    }
-    .question.active {
-      display: flex;
-    }
-    .question h2 {
-      font-size: 1.2rem;
-      color: #2d9cdb;
-    }
-    .options button {
-      margin: 10px 0;
-      padding: 12px;
-      border: 1px solid #2d9cdb;
-      border-radius: 6px;
-      background-color: white;
-      color: #2d9cdb;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .options button:hover {
-      background-color: #2d9cdb;
-      color: white;
-    }
-    .result {
-      display: none;
-      text-align: center;
-    }
-    .result h2 {
-      color: #2d9cdb;
-    }
-    .button-group {
-      margin-top: 2rem;
-    }
-    .button-group button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .restart-btn {
-      background-color: #2d9cdb;
-      color: white;
-    }
-    .share-btn {
-      background-color: #e0e0e0;
-      color: #333;
-    }
-    @media (max-width: 600px) {
-      .cover h1 {
-        font-size: 1.5rem;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>트래블 카드 테스트 결과</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f2f8ff;
+        margin: 0;
+        padding: 0;
+        color: #222;
       }
-      .cover p {
-        font-size: 0.9rem;
-      }
-      .question h2, .options button, .result h2 {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="cover" id="cover">
-    <h1>어딩 트래블 카드 테스트</h1>
-    <p>당신에게 꼭 맞는 해외여행 카드, 지금 찾아보세요!</p>
-    <button class="start-btn" onclick="startTest()">시작하기</button>
-  </div>
 
-  <div class="container" id="test-container" style="display: none;">
-    <div id="questions"></div>
-    <div class="result" id="result">
-      <h2 id="result-title">추천 카드</h2>
-      <p id="result-desc"></p>
-      <div class="button-group">
-        <button class="restart-btn" onclick="restartTest()">다시 테스트하기</button>
-        <button class="share-btn" onclick="copyLink()">링크 복사하기</button>
+      .container {
+        max-width: 700px;
+        margin: 50px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #2d64ff;
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .card-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #2d64ff;
+        margin-top: 40px;
+      }
+
+      .description {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 10px;
+      }
+
+      .hashtags {
+        margin-top: 15px;
+        color: #0077cc;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px;
+          padding: 20px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        .card-title {
+          font-size: 20px;
+        }
+        .description {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>당신에게 어울리는 트래블 카드 결과는?</h1>
+
+      <div class="card-result">
+        <div class="card-title">트래블 월렛</div>
+        <div class="description">
+          계획은 내가 한다, 예산도 내가 조절한다. 심플하고 빠른 선택을 선호하는 당신에게 딱 맞는 카드예요. 불필요한 혜택 없이 핵심만 담아, 미국·일본·유럽에서는 환율 수수료도 0%. 수동 충전 방식으로 지출을 정밀하게 조절할 수 있어요. 자유여행러나 미니멀 여행자에게 완벽하게 어울립니다.
+        </div>
+        <div class="hashtags">#심플한여행 #수동충전러 #트래블월렛 #미일유럽맞춤 #환율걱정없음</div>
+      </div>
+
+      <div class="card-result">
+        <div class="card-title">트래블 로그 체크카드</div>
+        <div class="description">
+          아시아 여행? 이제는 껌이지. 동남아, 중국, 일본, 대만에 익숙한 당신에게는 이 카드가 최고. 자동 충전 기능과 함께 58개국 환전 수수료 무료까지. 유니온페이 선택 시 중국에서도 자연스럽게 결제 가능해요. 출장이나 아시아 여행이 잦다면 이 카드가 루틴이 될 거예요.
+        </div>
+        <div class="hashtags">#아시아여행러 #중국갈때필수 #자동충전 #수수료제로 #트래블로그</div>
+      </div>
+
+      <div class="card-result">
+        <div class="card-title">트래블GO 체크카드</div>
+        <div class="description">
+          유럽 도시는 걷고, 타고, 찍고, 쓰는 재미지. 유럽에서 대중교통까지 쓸 수 있는 실속파 카드예요. 외화 충전 기반이라 환전 수수료도 적고, 현지에서 교통카드처럼 쓸 수 있어 유럽 여행에 최적화되어 있어요. 도시 탐험가와 장기 여행자에게 추천합니다.
+        </div>
+        <div class="hashtags">#유럽감성 #여행고수템 #대중교통마스터 #트래블GO는사랑</div>
+      </div>
+
+      <div class="card-result">
+        <div class="card-title">신한 SOL 트레블</div>
+        <div class="description">
+          혜택 빠삭하게 챙기는 사람, 바로 당신. 일본, 베트남, 미국 등 다양한 국가에서 할인 혜택이 적용돼요. 충전도 편하고 외화 계좌 관리도 가능해요. 혜택과 실속을 모두 챙기고 싶은 여행자에게는 이 카드가 정답입니다.
+        </div>
+        <div class="hashtags">#혜택왕 #여행리워드 #스타벅스5퍼 #베트남그랩할인 #신한트레블</div>
+      </div>
+
+      <div class="card-result">
+        <div class="card-title">토스카드</div>
+        <div class="description">
+          심플하지만 강력한 한 방. 토스 앱 하나로 모든 걸 관리할 수 있고, 하루 최대 1천만 원 충전까지 가능해요. UI도 예쁘고 직관적이라 IT 감각 있는 여행자에게 찰떡입니다. 지갑 없이 다니는 모바일 유저에게는 이 카드가 핵심.
+        </div>
+        <div class="hashtags">#하루천만원가능 #간편UI #토스유저 #심플라이프 #테크여행러</div>
+      </div>
+
+      <div class="card-result">
+        <div class="card-title">네이버페이머니카드</div>
+        <div class="description">
+          여행도 일상도, 결국 혜택으로 돌아온다. 국내에서는 네이버페이 혜택, 해외에선 무제한 3% 캐시백까지. 외화 충전 없이도 결제가 가능해요. 여행을 가끔 가더라도 혜택은 꼭 챙기고 싶은 실속형 여행자라면 이 카드가 정답.
+        </div>
+        <div class="hashtags">#국내해외모두OK #캐시백꿀 #네이버페이카드 #체크카드의힘 #일상여행러</div>
       </div>
     </div>
-  </div>
-
-  <script>
-    const questions = [
-      { q: '1. 여행할 나라가 어디인가요?', a: ['일본', '유럽', '미국', '동남아'] },
-      { q: '2. 카드 발급 시 어떤 점이 중요하신가요?', a: ['연회비 없음', '환율 우대', 'ATM 수수료', '간편한 연결계좌'] },
-      { q: '3. 어떤 브랜드를 선호하시나요?', a: ['비자', '마스터', '유니온페이', '상관없음'] },
-      { q: '4. 외화 충전 방식은 어떤 게 좋나요?', a: ['자동', '수동', '둘 다 가능', '충전 없이 결제'] },
-      { q: '5. 어떤 혜택을 원하시나요?', a: ['편의점 할인', '교통 할인', '캐시백', '수수료 없음'] },
-      { q: '6. 원화 재환전 수수료는?', a: ['없음', '있어도 괜찮음'] },
-      { q: '7. 외화 보유 한도는?', a: ['작아도 괜찮음', '최대한 높게', '상관없음'] },
-      { q: '8. ATM 인출 자주 하시나요?', a: ['자주 한다', '거의 안 한다'] }
-    ];
-
-    let current = 0;
-
-    function startTest() {
-      document.getElementById('cover').style.display = 'none';
-      document.getElementById('test-container').style.display = 'block';
-      renderQuestion();
-    }
-
-    function renderQuestion() {
-      const qWrap = document.getElementById('questions');
-      qWrap.innerHTML = '';
-      if (current < questions.length) {
-        const qDiv = document.createElement('div');
-        qDiv.className = 'question active';
-        qDiv.innerHTML = `<h2>${questions[current].q}</h2>`;
-
-        const optionsDiv = document.createElement('div');
-        optionsDiv.className = 'options';
-        questions[current].a.forEach((opt) => {
-          const btn = document.createElement('button');
-          btn.innerText = opt;
-          btn.onclick = () => {
-            current++;
-            renderQuestion();
-          };
-          optionsDiv.appendChild(btn);
-        });
-
-        qDiv.appendChild(optionsDiv);
-        qWrap.appendChild(qDiv);
-      } else {
-        showResult();
-      }
-    }
-
-    function showResult() {
-      const result = document.getElementById('result');
-      result.style.display = 'block';
-      document.getElementById('questions').style.display = 'none';
-      document.getElementById('result-title').innerText = '추천 카드: 트레블 월렛';
-      document.getElementById('result-desc').innerText = '연회비 없이 수수료 혜택까지 챙길 수 있는 스마트한 여행 카드예요!';
-    }
-
-    function restartTest() {
-      current = 0;
-      document.getElementById('result').style.display = 'none';
-      document.getElementById('questions').style.display = 'block';
-      renderQuestion();
-    }
-
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href);
-      alert('링크가 복사되었습니다!');
-    }
-  </script>
-</body>
+  </body>
 </html>
